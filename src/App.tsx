@@ -1,5 +1,5 @@
 import "./styles.css";
-import { Container, Divider } from "@mui/material";
+import { Container } from "@mui/material";
 import { Counter } from "./components/Counter";
 import { Users } from "./components/Users";
 
@@ -34,7 +34,6 @@ export default function App() {
   return (
     <Container className="App">
       <Counter></Counter>
-      <Divider/>
       <Users></Users>
     </Container>
   );

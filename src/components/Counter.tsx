@@ -3,13 +3,7 @@ import { counter, CounterAction, CounterState } from "../interfaces";
 import { Box, Button, ButtonGroup, TextField } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-
-function getRandomIntInclusive(start: number, end: number): number {
-  const min = Math.ceil(start);
-  const max = Math.floor(end);
-
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+import { getRandomIntInclusive } from "../utils/utils";
 
 const initialState: CounterState = {
   count: 0,
@@ -26,7 +20,6 @@ function reducer(state: CounterState, action: CounterAction): CounterState {
     case counter.Set:
       return { ...state, ...action.data };
     case counter.IncrementRandom:
-      console.log('***', getRandomIntInclusive(1, 10));
       return { ...state, count: state.count + getRandomIntInclusive(1, 10) };
     case counter.IncrementToOdd:
       return { ...state, count: state.count % 2 ? state.count + 2 : state.count + 1 };
@@ -52,7 +45,7 @@ export const Counter: FunctionComponent = () => {
   };
 
   return (
-    <Box>
+    <Box sx={{ mb: 10 }}>
 
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 2 }}>
         <Button aria-label="remove"
@@ -86,7 +79,7 @@ export const Counter: FunctionComponent = () => {
 
       </Box>
 
-      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, mb: 2 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1 }}>
         <TextField type="number"
                    label="Decrease count for"
                    variant="outlined"
